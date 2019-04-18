@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+	<mapper namespace="com.wudi.school.control.NewsAllManage.dao.NewsAllMapper">
+	
+	<select id="getNewsTypeList" parameterType="java.lang.String" resultType="java.util.Map">
+		SELECT id,news_type_name FROM news_type where news_type = #{news_type,jdbcType=VARCHAR}
+	</select>
+	
+	<select id="getNewsList" parameterType="java.lang.String" resultType="java.util.Map">
+		SELECT id,news_title,news_text,news_time from news 
+			where news_typeid = #{typeId,jdbcType=VARCHAR} 
+			ORDER BY news_time DESC
+	</select>
+	<select id="getNewsById" parameterType="java.lang.String" resultType="java.util.Map">
+		select n.id,news_title,news_text,news_time,news_type_name from news n,news_type nt 
+			WHERE n.news_typeid = nt.id 
+			AND n.id = #{id, jdbcType=VARCHAR}
+	</select>
+	
+	<select id="getNewsFlashList" parameterType="java.lang.String" resultType="java.util.Map">
+		SELECT id,nf_title,nf_text,nf_time from newsflash 
+			where nf_typeid = #{news_type,jdbcType=VARCHAR} 
+			ORDER BY nf_time DESC
+	</select>
+	<select id="getNewsFlashById" parameterType="java.lang.String" resultType="java.util.Map">
+		select nf.id,nf_title,nf_text,nf_time,news_type_name from newsflash nf,news_type nt 
+			WHERE nf.nf_typeid = nt.id 
+			AND nf.id = #{id, jdbcType=VARCHAR}
+	</select>
+	
+	</mapper>

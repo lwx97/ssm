@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+	<mapper namespace="com.wudi.school.control.noticeManage.dao.NoticeMapper">
+	
+	<select id="getNoticeList" resultType="java.util.Map">
+		select m.id,m.menu_name,m.menu_value from menu m where m.type_id = '6'
+	</select>
+	
+	</mapper>

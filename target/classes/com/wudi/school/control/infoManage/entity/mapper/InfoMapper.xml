@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+	<mapper namespace="com.wudi.school.control.infoManage.dao.InfoMapper">
+	
+	<insert id="sendReportInfo" parameterType="java.util.Map">
+		INSERT FROM report_info(id,report_title,report_time,report_phone,
+								report_type,report_text,report_status,
+								noReport,info_id)
+			VALUES (#{id},#{title},#{report_time},#{report_phone},
+								#{report_type},#{text},#{report_status},
+								#{noReport},#{info_id})	
+	</insert>
+	
+	</mapper>

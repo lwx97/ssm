@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+		<mapper namespace="com.wudi.school.control.resManage.dao.ResMapper">
+		
+		<select id="getResList" resultType="java.util.Map">
+			select r.res_id,r.res_title,r.res_time,r.res_text,r.res_image from res r ORDER BY res_time DESC limit 9
+			
+		</select>
+		
+		
+		</mapper>

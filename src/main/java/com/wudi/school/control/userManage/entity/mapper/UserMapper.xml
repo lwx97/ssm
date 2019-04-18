@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+	<mapper namespace="com.wudi.school.control.userManage.dao.UserMapper">
+	
+	<select id="ulogin" parameterType="java.util.Map" resultType="java.util.Map">
+		select userid,account,password,role,name,info_id from user where (account = #{account,jdbcType=VARCHAR} or info_id =#{account,jdbcType=VARCHAR}) and password = #{password,jdbcType=VARCHAR}
+	</select>
+	
+	<select id="getMyInfo" parameterType="java.lang.String" resultType="java.util.Map">
+		select u.userid,u.account,u.`password`,u.role,u.`name`,
+			si.sex,si.card,si.stu_id,si.exam_type,
+			si.enrol_batch,si.enrol_time,si.`status`,si.phone,
+			si.phone2,si.qq,si.email,si.address,si.head_img,
+			t.tu_major
+			from user u LEFT JOIN stu_info si 
+			on u.info_id = si.stu_id
+			LEFT JOIN tuition t
+			on si.major_id = t.tu_id
+			 WHERE u.info_id = #{info_id,jdbcType=VARCHAR}
+	</select>
+	
+	<select id="getClassInfo" parameterType="java.lang.String" resultType="java.util.Map">
+		select c.class_id,c.class_name,c.class_master,
+			c.class_master_phone,c.school_name,
+			c.class_qq,c.class_title,s.stu_id,u.name
+			from stu_info s 
+			LEFT JOIN user u 
+			ON u.info_id = s.stu_id 
+			LEFT JOIN class_info c 
+			ON c.class_id = s.class_id 
+			WHERE u.info_id = #{info_id,jdbcType=VARCHAR}
+	</select>
+	<select id="getIndex" parameterType="java.lang.String" resultType="java.util.Map">
+		SELECT u.`name`,u.info_id,u.role,o.id,o.outlay_need,o.outlay_ps,
+			o.outlay_type,o.outlay_yes,o.outlay_no 
+			from user u LEFT JOIN outlay o 
+			ON u.info_id = o.stu_id 
+			where u.info_id = #{stu_id,jdbcType=VARCHAR}
+	</select>
+	<select id="getOutlayInfo" parameterType="java.lang.String" resultType="java.util.Map">
+		SELECT u.`name`,u.info_id,u.role,o.id,o.outlay_need,o.outlay_ps,o.outlay_time,
+			o.outlay_type,o.outlay_yes,o.outlay_no 
+			from user u LEFT JOIN outlay o 
+			ON u.info_id = o.stu_id 
+			where u.info_id = #{stu_id,jdbcType=VARCHAR}
+	</select>
+	<update id="outlayObjection" parameterType="java.lang.String">
+		UPDATE outlay set outlay_ps = #{1,jdbcType=VARCHAR} WHERE id = #{0,jdbcType=VARCHAR}
+	</update>
+	</mapper>

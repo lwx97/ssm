@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+	<mapper namespace="com.wudi.school.control.mainViewManage.dao.MainViewMapper">
+	
+	<select id="getXZZC" resultType="java.lang.String">
+		select menu_value from menu where ps='xzzc'
+	</select>	
+	
+	<select id="getCollegeName"  resultType="java.util.Map">
+		SELECT id,college_name from college LIMIT 6
+	</select>
+	
+	<select id="getNewsFlash" resultType="java.util.Map">
+		select id,nf_title,nf_time FROM newsflash ORDER BY nf_time DESC LIMIT 6
+	</select>
+	
+	<select id="getNews" resultType="java.util.Map">
+		select id,news_title,news_time FROM news ORDER BY news_time DESC LIMIT 6
+	</select>
+	<select id="getVideo" resultType="java.util.Map">
+		SELECT id,v_title,v_url from video ORDER BY v_time DESC limit 3
+	</select>
+	<select id="getImgs4" resultType="java.util.Map">
+		select id,img_title,img_url from img ORDER BY img_time DESC LIMIT 4
+	</select>
+	</mapper>

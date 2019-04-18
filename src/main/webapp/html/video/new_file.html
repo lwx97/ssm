@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+
+    <title>Video.js | HTML5 Video Player</title>
+    <link href="http://vjs.zencdn.net/5.0.2/video-js.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="http://vjs.zencdn.net/ie8/1.1.0/videojs-ie8.min.js"></script>
+    <script src="http://vjs.zencdn.net/5.0.2/video.js"></script>
+	<script>
+		function myVideo(){
+			var video1 = document.getElementsByTagName('video')[0];
+			video1.pause();
+		}
+	</script>
+</head>
+
+<body>
+ 
+  
+  <h2>创建模态框（Modal）</h2>
+<!-- 按钮触发模态框 -->
+<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+	开始演示模态框
+</button>
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+                <button type="button" onclick="myVideo()" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">模态框（Modal）标题</h4>
+            </div>
+			<div class="modal-body" style="height: 450px;">
+				 <video id="example_video_1" class="video-js vjs-default-skin" controls preload="none" width="570px" height="400px" poster="http://vjs.zencdn.net/v/oceans.png" data-setup="{}">
+				  <source src="http://vjs.zencdn.net/v/oceans.mp4" type="video/mp4">
+				  <source src="http://vjs.zencdn.net/v/oceans.webm" type="video/webm">
+				  <source src="http://vjs.zencdn.net/v/oceans.ogv" type="video/ogg">
+				  <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+				</video>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal -->
+</div>
+</body>
+</html>

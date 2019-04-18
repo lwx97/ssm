@@ -1,0 +1,322 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>迎新网</title>
+	<script src="bootstrap-3.3.7-dist/js/jquery.min.js"></script>
+	<script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+
+
+
+<link href="video/video-js.css" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css" type="text/css" media="all"/>
+<link rel="stylesheet" href="css/mo.css">
+<script src="js/jquery-1.8.3.min.js"></script>
+ <script src="video/ie8/videojs-ie8.min.js"></script>
+ <script src="video/video.js"></script>
+ 
+ 
+ 
+ 
+<script type="text/javascript">
+
+
+//图片滚动 调用方法 imgscroll({speed: 30,amount: 1,dir: "up"});
+$.fn.imgscroll = function(o){
+	var defaults = {
+		speed: 40,
+		amount: 0,
+		width: 1,
+		dir: "left"
+	};
+	o = $.extend(defaults, o);
+	
+	return this.each(function(){
+		var _li = $("li", this);
+		_li.parent().parent().css({overflow: "hidden", position: "relative"}); //div
+		_li.parent().css({margin: "0", padding: "0", overflow: "hidden", position: "relative", "list-style": "none"}); //ul
+		_li.css({position: "relative", overflow: "hidden"}); //li
+		if(o.dir == "left") _li.css({float: "left"});
+		
+		//初始大小
+		var _li_size = 0;
+		for(var i=0; i<_li.size(); i++)
+			_li_size += o.dir == "left" ? _li.eq(i).outerWidth(true) : _li.eq(i).outerHeight(true);
+		
+		//循环所需要的元素
+		if(o.dir == "left") _li.parent().css({width: (_li_size*3)+"px"});
+		_li.parent().empty().append(_li.clone()).append(_li.clone()).append(_li.clone());
+		_li = $("li", this);
+
+		//滚动
+		var _li_scroll = 0;
+		function goto(){
+			_li_scroll += o.width;
+			if(_li_scroll > _li_size)
+			{
+				_li_scroll = 0;
+				_li.parent().css(o.dir == "left" ? { left : -_li_scroll } : { top : -_li_scroll });
+				_li_scroll += o.width;
+			}
+				_li.parent().animate(o.dir == "left" ? { left : -_li_scroll } : { top : -_li_scroll }, o.amount);
+		}
+		
+		//开始
+		var move = setInterval(function(){ goto(); }, o.speed);
+		_li.parent().hover(function(){
+			clearInterval(move);
+		},function(){
+			clearInterval(move);
+			move = setInterval(function(){ goto(); }, o.speed);
+		});
+	});
+};
+//友情链接下拉框跳转弹出新窗口
+function frlink(selObj){
+window.open(selObj.options[selObj.selectedIndex].value);}
+</script>
+<script type="text/javascript" src="js/commons.js"></script>
+<script type="text/javascript" src="index.js"></script>
+</head>
+
+<body>
+<div id="hearder2" class="clearfix">
+	<div class="logo">
+   	  <img src="">
+  </div>
+  <div class="logo-name"><p id="test"></p>迎新网</div>
+    <div class="form-tools">
+   	  <form id="search" name="search" method="post">
+      	
+        <div class="search-box">
+            <input type="text" name="textfield" id="textfield" class="input-text" placeholder="请输入搜索关键词">
+            <input type="image" src="images/search.png" class="input-submit" />
+        </div>
+  	  </form>
+    </div>
+</div>
+<div id="menu-box" class="clearfix">
+	<ul>
+		<li><a href="index2.html">迎新首页</a></li>
+	    <li><a href="liaojiedaxue.html">了解大学</a></li>
+	    <li><a href="jiazaidaxue.html">家在大学</a></li>
+	    <li><a href="xuezaidaxue.html">学在大学</a></li>
+	    <li><a href="zoujindaxue.html">走进大学</a></li>
+	    <li><a href="yxgg.html">迎新公告</a></li>
+	    <li><a href="yxxz.html">迎新须知</a></li>
+	    <li><a href="yuanxijieshao.html">院系介绍</a></li>
+	</ul>
+</div>
+<div id="slider-box" style="background:url(images/slider2.jpg) center center;"></div>
+<!-- div1 -->
+<div id="div1" class="clearfix">
+	<div class="left260">
+   	  <div class="title-box">学生登录</div>
+      <form id="form1" name="form1" >
+        <input type="text" name="account" id="textfield2" placeholder="用户名" class="uname">
+        <input type="password" name="password" id="password" placeholder="密码" class="upass">
+        <div class="t-link">
+            <input type="checkbox" name="checkbox" id="checkbox" checked="true" class="chek">记住密码
+            <a href="#">忘记密码？</a>
+        </div>
+        <input type="button" onclick="ulogin();" name="button" id="submit" style="width: 80%;" value="登录" class="input-login">
+      </form>
+    </div>
+	<div class="center450">
+    	<div class="title-box">校长致辞</div>
+        <p><img src="images/p-img.jpg" align="left"><p id="p_xzzc"></p>
+    </div>
+	<div class="right260">
+    	<ul>
+        	<li>
+            	<a href="liaojiedaxue.html" title="#"><img src="images/icon-1.png"></a><br />
+                <a href="liaojiedaxue.html" style="color:#d81e06;">学校简历</a>
+            </li>
+        	<li>
+            	<a href="yxxz.html" title="#"><img src="images/icon-2.png"></a><br />
+                <a href="yxxz.html" style="color:#eda761;">新生报到流程</a>
+            </li>
+        	<li>
+            	<a href="yxgg.html" title="#"><img src="images/icon-3.png"></a><br />
+                <a href="yxgg.html" style="color:#469892;">学费一览</a>
+            </li>
+        	<li>
+            	<a href="swzl.html" title="#"><img src="images/icon-4.png"></a><br />
+                <a href="swzl.html" style="color:#4094ac;">失物招领</a>
+            </li>
+        	<li>
+            	<a href="xuezaidaxue.html" title="#"><img src="images/icon-5.png"></a><br />
+                <a href="xuezaidaxue.html" style="color:#1c6dbf;">学生管理规定</a>
+            </li>
+        	<li>
+            	<a href="jiazaidaxue.html" title="#"><img src="images/icon-6.png"></a><br />
+                <a href="jiazaidaxue.html" style="color:#86309f;">心理咨询</a>
+            </li>
+        	<li>
+            	<a href="xuezaidaxue.html" title="#"><img src="images/icon-7.png"></a><br />
+                <a href="xuezaidaxue.html" style="color:#d4237a;">图书馆简介</a>
+            </li>
+        	<li>
+            	<a href="yxxz.html" title="#"><img src="images/icon-8.png"></a><br />
+                <a href="yxxz.html" style="color:#1a7355;">系统使用说明</a>
+            </li>
+        	<li>
+            	<a href="jiazaidaxue.html" title="#"><img src="images/icon-9.png"></a><br />
+                <a href="jiazaidaxue.html" style="color:#d4237a;">校园生活向导</a>
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- div2 -->
+<div id="div2" class="clearfix">
+	<div class="left260">
+    	<div class="title-box">绿色通道<a href="list-text2.html" class="title-more">更多...</a></div>
+            <ul>
+                <li><a href="detail2.html">经济困难学生登记</a></li>
+                <li><a href="detail2.html">个人基本信息维护</a></li>
+                <li><a href="detail2.html">学生调研问卷</a></li>
+            </ul>
+    </div>
+    <div class="center450">
+        <div class="tabbox">
+            <div class="tab">
+                <a href="yingxinkx.html" class="on">迎新快讯</a>
+                <a href="yuanxijieshao.html">院系介绍</a>
+                <a href="gdyw.html">工大要闻</a>
+              </div>
+            <div class="content">
+                    <div style="display:block;" class="tb">
+                    	<ul id="newsFlash">
+                        </ul>
+                    </div>
+                    <div class="tb">
+                    	<ul id="collegeList">
+                        	
+                        </ul>
+                    </div>
+                    <div class="tb">
+                    	<ul id="news">
+                        </ul>
+
+                    </div>
+            </div>
+        </div>
+    </div>
+    <div class="right260" id="video">
+    	<div class="title-box">校园视频<a href="list-pic2.html" class="title-more">更多...</a></div>
+    	<a data-toggle="modal" data-target="#myModal">
+        <div class="video-box" onclick="myModal()">
+			<!--  <embed src='http://player.youku.com/player.php/sid/XMjUyNDc5MDYwMA==/v.swf' allowFullScreen='true' quality='high' width='260' height='150' align='middle' allowScriptAccess='always' type='application/x-shockwave-flash'></embed>
+			-->
+			<video id="example_video_1" class="video-js vjs-default-skin" preload="none" width='260' height='150px' poster="http://vjs.zencdn.net/v/oceans.png" data-setup="{}">
+				  <source id="v1" src="http://vjs.zencdn.net/v/oceans.mp4" type="video/mp4">
+				 <!--  <source src="http://vjs.zencdn.net/v/oceans.webm" type="video/webm">
+				  <source src="http://vjs.zencdn.net/v/oceans.ogv" type="video/ogg">-->
+				</video>
+        </div>
+        </a>
+        <ul>
+            <!-- 其他视频标题 -->
+        </ul>
+    </div>
+</div>
+
+<script>
+$(function(){
+	$(".tabbox .tab a").mouseover(function(){
+		$(this).addClass('on').siblings().removeClass('on');
+		var index = $(this).index();
+		number = index;
+		$('.tabbox .content .tb').hide();
+		$('.tabbox .content .tb:eq('+index+')').show();
+	});
+	
+	var auto = 1;  //等于1则自动切换，其他任意数字则不自动切换
+	if(auto ==1){
+		var number = 0;
+		var maxNumber = $('.tabbox .tab a').length;
+		function autotab(){
+			number++;
+			number == maxNumber? number = 0 : number;
+			$('.tabbox .tab a:eq('+number+')').addClass('on').siblings().removeClass('on');
+			$('.tabbox .content .tb:eq('+number+')').show().siblings().hide();
+		}
+		var tabChange = setInterval(autotab,3000);
+		//鼠标悬停暂停切换
+		$('.tabbox').mouseover(function(){
+			clearInterval(tabChange);
+		});
+		$('.tabbox').mouseout(function(){
+			tabChange = setInterval(autotab,3000);
+		});
+	  }
+});
+</script>
+<!-- div3 -->
+<div id="div3"><img src="images/pop100.jpg"></div>
+<div id="div4">
+	<div class="title-box">校园风光</div>
+</div>
+<div class="scrollleft clearfix">
+	<!-- 图片展示区 -->
+	<ul>
+		
+	</ul>
+</div>
+
+
+<!-- 模态框（Modal）--> 
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+                <button type="button" onclick="myVideo()" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">模态框（Modal）标题</h4>
+            </div>
+			<div class="modal-body" style="height:  450px;">
+				 <video id="example_video_2" class="video-js vjs-default-skin" controls preload="none" width="570px" height="400px" poster="#" data-setup="{}">
+				  <source id="v2" src="" type="video/mp4">
+				</video>
+			</div>
+		</div><!-- /.modal-content -->
+	</div> <!--/.modal -->
+ </div> 
+
+
+
+<script type="text/javascript">
+
+</script> 
+<!-- div5 -->
+<div id="div5" class="clearfix">
+    <div class="link-box">
+    	<span>友情链接：</span>
+        <select onChange="frlink(this)" name="select" class="select-link">
+            <option selected>--- 教育类网站 ---</option>
+            <option value="http://www.veryhuo.com">烈火网</option>
+            <option value="http://www.sina.com.cn">新浪网</option>
+            <option value="http://www.163.com">网易</option>
+        </select>
+        <select onChange="frlink(this)" name="select" class="select-link">
+            <option selected>--- 政府类网站 ---</option>
+            <option value="http://www.china.com">中华网</option>
+            <option value="http://www.sina.com.cn">新浪网</option>
+            <option value="http://www.163.com">网易</option>
+        </select>
+        <select onChange="frlink(this)" name="select" class="select-link">
+            <option selected>--- 校园类网站 ---</option>
+            <option value="http://www.veryhuo.com">烈火网</option>
+            <option value="http://www.sina.com.cn">新浪网</option>
+            <option value="http://www.163.com">网易</option>
+        </select>
+        <select onChange="frlink(this)" name="select" class="select-link">
+            <option selected>--- 其它类网站 ---</option>
+            <option value="http://www.veryhuo.com">烈火网</option>
+            <option value="http://www.sina.com.cn">新浪网</option>
+            <option value="http://www.163.com">网易</option>
+        </select>
+    </div>
+</div>
+<div id="div6">Copyright &copy; 2016 物理与核工程虚拟仿真教学中心 All rights reserved.</div>
+</body>
+</html>

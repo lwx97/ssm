@@ -1,0 +1,247 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>
+	学生信息管理平台
+</title><link href="../Style/StudentStyle.css" rel="stylesheet" type="text/css" /><link href="../Script/jBox/Skins/Blue/jbox.css" rel="stylesheet" type="text/css" /><link href="../Style/ks.css" rel="stylesheet" type="text/css" />
+    <script src="../Script/jBox/jquery-1.4.2.min.js" type="text/javascript"></script>
+    <script src="../Script/jBox/jquery.jBox-2.3.min.js" type="text/javascript"></script>
+    <script src="../Script/jBox/i18n/jquery.jBox-zh-CN.js" type="text/javascript"></script>
+    <script src="../Script/Common.js" type="text/javascript"></script>
+    <script src="../Script/Data.js" type="text/javascript"></script>
+     <script src="../../js/commons.js" type="text/javascript"></script>
+    <script src="wdcw.aspx.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $().ready(function () {
+            setStudMsgHeadTabCheck();
+            showUnreadSysMsgCount();
+        });
+
+        //我的信息头部选项卡
+        function setStudMsgHeadTabCheck() {
+            var currentUrl = window.location.href;
+            currentUrl = currentUrl.toLowerCase();
+            var asmhm = "";
+            $("#ulStudMsgHeadTab li").each(function () {
+                asmhm = $(this).find('a').attr("href").toLowerCase();
+                if (currentUrl.indexOf(asmhm) > 0) {
+                    $(this).find('a').attr("class", "tab1");
+                    return;
+                }
+            });
+        }
+
+        //显示未读系统信息
+        function showUnreadSysMsgCount() {
+            var unreadSysMsgCount = "0";
+            if (Number(unreadSysMsgCount) > 0) {
+                $("#unreadSysMsgCount").html("(" + unreadSysMsgCount + ")");
+            }
+        }
+
+        //退出
+        function loginOut() {
+            if (confirm("确定退出吗？")) {
+               
+            }
+        }
+        //更改报考类别
+        function changeCateory(thisObj, id) {
+            var oldCateoryId = $("#cateoryId").val();
+            var cateoryId = "";
+            if (id != null) {
+                cateoryId = id;
+            }
+            else {
+                cateoryId = thisObj.val();
+            }
+            var studentId = $("#studentId").val();
+            if (cateoryId.length <= 0) {
+                jBox.tip("报考类别不能为空！");
+                if (id == null) {
+                    thisObj.val(oldCateoryId);
+                }
+            }
+            else {
+                studentInfo.changeStudentCateory(cateoryId, function (data) {
+                    var result = $.parseJSON(data);
+                    if ((String(result.ok) == "true")) {
+                        window.location.href = "/Index.aspx";
+                    }
+                    else {
+                        jBox.tip(result.message);
+                    }
+                });
+            }
+        }
+    </script>
+    
+
+</head>
+<body>
+
+    <div class="banner">
+        <div class="bgh">
+            <div class="page">
+                <div id="logo">
+                    <a href="../Index.aspx.html">
+                        <img src="../Images/Student/logo.gif" alt="" width="165" height="48" />
+                    </a>
+                </div>
+                <div class="topxx">
+                    <select onchange="changeCateory($(this))" style="font-size: 11px; background: #4991cf;
+                        color: #fff;">
+                        
+                        <option 
+                            value="4">
+                            远程</option>
+                        
+                        <option selected='selected'
+                            value="1">
+                            自考</option>
+                        
+                    </select>
+                    <span class="stu_id"></span>学员：<span class="name"></span>，欢迎您！ <a href="Index.aspx.html">我的信息</a> <a href="../User/StudentInfor/systemMsge.aspx.html">
+                        通知</a> <a href="../User/Account/ChangePasswd.aspx.html">密码修改</a> <a onclick="loginOut()"
+                            href="javascript:">安全退出</a>
+                </div>
+                <div class="blog_nav">
+                    <ul>
+                        <li><a href="../Index.aspx.html">我的信息</a></li>
+                        <li><a href="../EducationCenter/Score.aspx.html">教务中心</a></li>
+                        <li><a href="../MyAccount/wdcw.aspx.html">我的学费</a></li>
+                        <li><a href="../OnlineTeaching/StudentMaterial.aspx.html">资料中心</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page">
+        <div class="box mtop">
+            <div class="leftbox">
+                <div class="l_nav2">
+                    <div class="ta1">
+                        <strong>个人中心</strong>
+                        <div class="leftbgbt">
+                        </div>
+                    </div>
+                    <div class="cdlist">
+                        <div>
+                            <a href="Index.aspx.html">我的信息</a></div>
+                        <div>
+                            <a href="ClassInfo.aspx.html">班级信息 </a>
+                        </div>
+                        <div>
+                            <a href="../User/StudentInfor/Letter.aspx.html">短信息</a></div>
+                        <div>
+                            <a href="../User/StudentInfor/systemMsge.aspx.html">学院通知</a></div>
+                    </div>
+                    <div class="ta1">
+                        <strong>教务中心</strong>
+                        <div class="leftbgbt2">
+                        </div>
+                    </div>
+                    <div class="cdlist">
+                        <div>
+                            <a href="../EducationCenter/Application.aspx.html">我的报考</a></div>
+                        <div>
+                            <a href="../EducationCenter/Score.aspx.html">我的成绩</a></div>
+                        <div>
+                            <a href="../EducationCenter/Book.aspx.html">我的书籍</a></div>
+                    </div>
+                   
+                    <div class="ta1">
+                        <strong>财务中心</strong><div class="leftbgbt2">
+                        </div>
+                    </div>
+                    <div class="cdlist">
+                        <div>
+                            <a href="../MyAccount/wdcw.aspx.html">我的财务</a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="rightbox">
+                
+<h2 class="mbx">教务中心 &gt; 我的财务</h2>
+<div class="cztable">
+    <div style="padding-bottom:20px;">
+        <table class="table1" border="0" cellspacing="0" cellpadding="0" width="100%">
+            <tr align="center">
+                <th width="20%">【<span class="name"></span>】总缴费统计 </th>
+                <th>应缴费用 </th>
+                <th>实缴费用 </th>
+                
+                <th>欠缴费用 </th>
+            </tr>
+            
+            <tr>
+                <td align="center" class="greenfont"><span class="outlay_type"></span>&nbsp;</td>
+                <td align="right" class="greenfont">
+                    <span class="outlay_need_all" style="color: #FF0000; font-size: 16px; font-weight: bold;">
+                        7800.00
+                    </span>
+                </td>
+                <td align="right" class="greenfont">
+                    <span class="outlay_yes_all" style="color: #FF0000; font-size: 16px; font-weight: bold;">
+                        3700.00
+                    </span>
+                </td>
+                
+                <td align="right" class="greenfont">
+                    <span class="outlay_no_all" style="color: #FF0000; font-size: 16px; font-weight: bold;">
+                        4100.00
+                    </span>
+                </td>
+            </tr>
+           
+        </table>
+    </div>
+<div>
+注：请仔细查看自己的缴费记录，如无误请点击“<span class="red">确定无误</span>”，如不正确请点击“<span class="red">有异议</span>”。 <br />
+其中缴费项目缴费说明相同，相加后的起来对比。应缴总和=实缴总和+欠缴总和 <br />
+    <div>
+        <p>&nbsp;</p>
+        <p><strong>欠费项目：</strong></p>
+    </div>
+    <table class="table2" border="0" cellspacing="0" cellpadding="0" width="100%">
+        <tr align="center">
+            <th>序号</th>
+            <th>欠费项目</th>
+            <th>应交金额</th>
+            <th>已交金额</th>
+            <th>欠交金额</th>
+        </tr>
+
+
+
+
+    </table>
+
+    <div>
+        <p>&nbsp;</p>
+        <p><strong>缴费信息：</strong></p>
+    </div>
+    <table class="table3" border="0" cellspacing="0" cellpadding="0" width="100%">
+        <tr align="center">
+            <th>序号</th>
+            <th>交费项目</th>
+            <th>交费金额</th>
+            
+            <th>交费时间</th>
+            <th>操作</th>
+        </tr>
+    
+    </table>
+</div>
+</div>
+
+            </div>
+        </div>
+        <div class="footer">
+            <p>
+                &copy;copyright 2012 广博教育 csgb.net 版权所有 站长统计</p>
+        </div>
+    </div>
+</body>
+</html>
