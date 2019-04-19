@@ -1,5 +1,4 @@
 
-
 function func(){
 	var vs = $('#Ctype1  option:selected').val();
 	if(vs==3){
@@ -25,7 +24,7 @@ function sendReportInfo(){
 	var vs3 = $('#Ctype3  option:selected').val();
 	var report_phone = $("#Ctitle3").val();
 	var report_time = $(".Wdate").val();
-	var title = $(".Ctitle1").val();
+	var title = $("#Ctitle1").val();
 	var text = $("#Ccontent").val();
 	//报到flag true为能报到，false不能
 	var flag = true;
@@ -66,7 +65,16 @@ function sendReportInfo(){
 		type : "post",
 		success : function(data){
 			if(data.flag!=null){
-				alert("提交成功！");
+				alert("提交成功！");//disabled="disabled"
+				$('#Ctype1').attr("disabled","disabled");
+				$('#Ctype2').attr("disabled","disabled");
+				$('#Ctype3').attr("disabled","disabled");
+				$("#Ctitle3").attr("disabled","disabled");
+				$(".Wdate").attr("disabled","disabled");
+				$("#Ctitle1").attr("disabled","disabled");
+				$("#Ccontent").attr("disabled","disabled");
+				$("#update").val("修改");
+				$("#update").attr("onclick","");
 			}else{
 				alert("提交失败！");
 			}

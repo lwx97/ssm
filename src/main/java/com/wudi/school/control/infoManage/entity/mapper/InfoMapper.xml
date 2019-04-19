@@ -6,7 +6,7 @@
 	<mapper namespace="com.wudi.school.control.infoManage.dao.InfoMapper">
 	
 	<insert id="sendReportInfo" parameterType="java.util.Map">
-		INSERT FROM report_info(id,report_title,report_time,report_phone,
+		INSERT INTO report_info(id,report_title,report_time,report_phone,
 								report_type,report_text,report_status,
 								noReport,info_id)
 			VALUES (#{id},#{title},#{report_time},#{report_phone},

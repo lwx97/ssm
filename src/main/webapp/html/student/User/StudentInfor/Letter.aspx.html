@@ -10,7 +10,7 @@
     <script src="../../Script/jBox/i18n/jquery.jBox-zh-CN.js" type="text/javascript"></script>
     <script src="../../Script/Common.js" type="text/javascript"></script>
     <script src="../../Script/Data.js" type="text/javascript"></script>
-    <script type="../../../js/commons.js"></script>
+    <script src="../../../js/commons.js" type="text/javascript"></script>
     <script src="Letter.aspx.js" type="text/javascript"></script>
     <script type="text/JavaScript" src="../../../My97DatePicker/WdatePicker.js"></script> 
     <script type="text/javascript">
@@ -208,7 +208,7 @@
         <tr>
             <td width="15%" align="right"><div align="right">报到状态： </div></td>
             <td>
-                <select id="Ctype1" name="Ctype" onchange="func()">
+                <select id="Ctype1" name="Ctype"  onchange="func()">
                     <option value="Unselected">请选择</option>
                     <option value="1">按时报到</option>
                     <option value="2">延时报到</option>
@@ -233,7 +233,7 @@
             	<input id="d422" class="Wdate" type="text" onclick="WdatePicker({minDate:'%y-%M-{%d+1}'})"/> 
             </td>
         </tr>
-        <tr id="tr3" display: none;>
+        <tr id="tr3" style="display: none;">
             <td width="15%" align="right"><div align="right">无法报到原因： </div></td>
             <td >
                 <select id="Ctype3" name="Ctype">
@@ -255,7 +255,7 @@
         <tr>
             <td colspan="2" align="center">
                 <div align="center" >
-                    <input type="submit" value="提交" onclick="sendReportInfo()" class="input2" />
+                    <input type="submit" value="提交" onclick="sendReportInfo()" class="input2" id="update"/>
                     <input type="submit" value="返回" onclick="returnIndex()" class="input2" />
                 </div>
             </td>
