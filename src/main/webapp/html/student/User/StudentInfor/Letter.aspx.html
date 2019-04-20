@@ -41,19 +41,6 @@
             }
         }
 
-        //退出
-        function loginOut() {
-            if (confirm("确定退出吗？")) {
-                StudentLogin.loginOut(function (data) {
-                    if (data == "true") {
-                        window.location = "/Login.aspx";
-                    }
-                    else {
-                        jBox.alert("退出失败！", "提示", new { buttons: { "确定": true} });
-                    }
-                });
-            }
-        }
         //更改报考类别
         function changeCateory(thisObj, id) {
             var oldCateoryId = $("#cateoryId").val();
@@ -106,16 +93,15 @@
                     </a>
                 </div>
                 <div class="topxx">
-                    910513201419学员：邹智，欢迎您！ <a href="../../Index.aspx.html">我的信息</a> <a href="../User/StudentInfor/systemMsge.aspx.html">
+                    1516270255学生：李文祥，欢迎您！ <a href="../../Index.aspx.html">我的信息</a> <a href="../User/StudentInfor/systemMsge.aspx.html">
                         通知</a> <a href="../User/Account/ChangePasswd.aspx.html">密码修改</a> <a onclick="loginOut()"
                             href="javascript:">安全退出</a>
                 </div>
                 <div class="blog_nav">
                     <ul>
                         <li><a href="../../Index.aspx.html">我的信息</a></li>
-                        <li><a href="../../EducationCenter/Score.aspx.html">教务中心</a></li>
+                        <li><a href="../../EducationCenter/Application.aspx.html">教务中心</a></li>
                         <li><a href="../../MyAccount/wdcw.aspx.html">我的学费</a></li>
-                        <li><a href="../OnlineTeaching/StudentMaterial.aspx.html">资料中心</a></li>
                     </ul>
                 </div>
             </div>
@@ -148,11 +134,9 @@
                     </div>
                     <div class="cdlist">
                         <div>
-                            <a href="../EducationCenter/Application.aspx.html">我的报考</a></div>
+                            <a href="../../EducationCenter/Application.aspx.html">绿色通道</a></div>
                         <div>
-                            <a href="../EducationCenter/Score.aspx.html">我的成绩</a></div>
-                        <div>
-                            <a href="../EducationCenter/Book.aspx.html">我的书籍</a></div>
+                            <a href="../../EducationCenter/Book.aspx.html">我的书籍</a></div>
                     </div>
                    
                     <div class="ta1">
@@ -161,7 +145,7 @@
                     </div>
                     <div class="cdlist">
                         <div>
-                            <a href="../MyAccount/wdcw.aspx.html">我的财务</a></div>
+                            <a href="../../MyAccount/wdcw.aspx.html">我的财务</a></div>
                     </div>
                 </div>
             </div>
@@ -178,23 +162,6 @@
     <li><a class="tab2" onclick="" href="systemMsge.aspx.html">通知<span style="color:#ff0000; padding-left:5px;" id="unreadSysMsgCount"></span></a></li>
 </ul>
 
-</div>
-<div class="cztable">
-    <table width="100%" border="0" cellspacing="0" cellpadding="0">
-        <tr>
-            <th style="text-align:center;" width="5%">序号</th>
-            <th style="text-align:center;" width="10%">报到状态</th>
-            <th width="15%">到校方式</th>
-            <th width="20%">内容</th>
-            <th style="text-align:center;" width="18%">报到时间</th>
-            <th style="text-align:center;" width="13%">联系方式</th>
-        </tr>
-        
-        <tr style="height: 28px" class="tdbg" align="center">
-            <td colspan="13" align="left" style="color: Red; font-weight:bold;">暂无信息!请填写网上报道信息！</td>
-        </tr>
-        
-    </table>
 </div>
 
 <div class="cztable">
@@ -267,7 +234,7 @@
         </div>
         <div class="footer">
             <p>
-                &copy;copyright 2019 maowudi.com</p>
+                ©copyright 2019 李文祥 maowudi.com 版权所有 站长统计</p>
         </div>
     </div>
 </body>

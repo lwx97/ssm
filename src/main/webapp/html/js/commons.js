@@ -18,6 +18,23 @@ var localhostPath = function(){
  * 退出
  */
 function loginOut(){
+	$.ajax({
+		url : localhostPath() + "/user/loginOut.do",
+		dataType : "json",
+		type : "post",
+		success : function(data){
+			if(data.flag=="true"){
+				window.location.href = localhostPath();
+			}else{
+				alert("退出失败！");
+			}
+		},
+		error : function (){
+			alert("error!");
+		}
+		
+		
+	});
 	
 }
 

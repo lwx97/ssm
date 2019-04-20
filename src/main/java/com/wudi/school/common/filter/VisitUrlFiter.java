@@ -29,7 +29,7 @@ public class VisitUrlFiter implements Filter {
 //		String account = (String) session.getAttribute("account");
 		String role = (String) session.getAttribute("role");
 		if(role==null){
-			res.sendRedirect("http://127.0.0.1:8080"+req.getContextPath()+GlobalConstant.INDEX_PATH);
+			res.sendRedirect(req.getScheme()+"://"+req.getServerName()+":"+req.getServerPort()+req.getContextPath()+GlobalConstant.INDEX_PATH);
 			return;
 		}else if(path.contains(GlobalConstant.STU_URL) && GlobalConstant.STU_VALUE.equals(role)){
 			//满足路径和角色统一则通过。		学生
@@ -38,7 +38,7 @@ public class VisitUrlFiter implements Filter {
 		}else if(path.contains(GlobalConstant.ADMIN_URL) && GlobalConstant.ADMIN_VALUE.equals(role)){
 			//满足路径和角色统一则通过。		超管
 		}else{
-			res.sendRedirect("http://127.0.0.1:8080"+req.getContextPath()+GlobalConstant.INDEX_PATH);
+			res.sendRedirect(req.getScheme()+"://"+req.getServerName()+":"+req.getServerPort()+req.getContextPath()+GlobalConstant.INDEX_PATH);
 			return;
 		}
 		chain.doFilter(request, response);

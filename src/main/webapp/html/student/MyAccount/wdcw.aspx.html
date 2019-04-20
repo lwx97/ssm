@@ -40,12 +40,6 @@
             }
         }
 
-        //退出
-        function loginOut() {
-            if (confirm("确定退出吗？")) {
-               
-            }
-        }
         //更改报考类别
         function changeCateory(thisObj, id) {
             var oldCateoryId = $("#cateoryId").val();
@@ -90,18 +84,6 @@
                     </a>
                 </div>
                 <div class="topxx">
-                    <select onchange="changeCateory($(this))" style="font-size: 11px; background: #4991cf;
-                        color: #fff;">
-                        
-                        <option 
-                            value="4">
-                            远程</option>
-                        
-                        <option selected='selected'
-                            value="1">
-                            自考</option>
-                        
-                    </select>
                     <span class="stu_id"></span>学员：<span class="name"></span>，欢迎您！ <a href="Index.aspx.html">我的信息</a> <a href="../User/StudentInfor/systemMsge.aspx.html">
                         通知</a> <a href="../User/Account/ChangePasswd.aspx.html">密码修改</a> <a onclick="loginOut()"
                             href="javascript:">安全退出</a>
@@ -109,9 +91,8 @@
                 <div class="blog_nav">
                     <ul>
                         <li><a href="../Index.aspx.html">我的信息</a></li>
-                        <li><a href="../EducationCenter/Score.aspx.html">教务中心</a></li>
+                        <li><a href="../../EducationCenter/Application.aspx.html">教务中心</a></li>
                         <li><a href="../MyAccount/wdcw.aspx.html">我的学费</a></li>
-                        <li><a href="../OnlineTeaching/StudentMaterial.aspx.html">资料中心</a></li>
                     </ul>
                 </div>
             </div>
@@ -128,12 +109,12 @@
                     </div>
                     <div class="cdlist">
                         <div>
-                            <a href="Index.aspx.html">我的信息</a></div>
+                            <a href="../MyInfo/Index.aspx.html">我的信息</a></div>
                         <div>
-                            <a href="ClassInfo.aspx.html">班级信息 </a>
+                            <a href="../MyInfo/ClassInfo.aspx.html">班级信息 </a>
                         </div>
                         <div>
-                            <a href="../User/StudentInfor/Letter.aspx.html">短信息</a></div>
+                            <a href="../User/StudentInfor/Letter.aspx.html">网上报到信息</a></div>
                         <div>
                             <a href="../User/StudentInfor/systemMsge.aspx.html">学院通知</a></div>
                     </div>
@@ -144,9 +125,7 @@
                     </div>
                     <div class="cdlist">
                         <div>
-                            <a href="../EducationCenter/Application.aspx.html">我的报考</a></div>
-                        <div>
-                            <a href="../EducationCenter/Score.aspx.html">我的成绩</a></div>
+                            <a href="../EducationCenter/Application.aspx.html">绿色通道</a></div>
                         <div>
                             <a href="../EducationCenter/Book.aspx.html">我的书籍</a></div>
                     </div>
@@ -240,7 +219,7 @@
         </div>
         <div class="footer">
             <p>
-                &copy;copyright 2012 广博教育 csgb.net 版权所有 站长统计</p>
+                ©copyright 2019 李文祥 maowudi.com 版权所有 站长统计</p>
         </div>
     </div>
 </body>

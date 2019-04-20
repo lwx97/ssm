@@ -41,4 +41,8 @@ public class GlobalConstant {
 	 */
 	public static final String ADMIN_VALUE = "3";
 
+	/**
+	 * 当tu_id=0时，为公共课。当tu_id= "-1"时，为选修。选修暂且不写。
+	 */
+	public static final String COURSE_TU_ID = "0";
 }

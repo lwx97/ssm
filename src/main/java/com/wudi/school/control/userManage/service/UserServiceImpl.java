@@ -52,6 +52,8 @@ public class UserServiceImpl implements UserService{
 				for(Cookie cookie : cookies){
 					if("user_pass".equals(cookie.getName())){
 						cookie.setMaxAge(0);
+						cookie.setPath("/");
+						res.addCookie(cookie);
 					}
 				}
 			}
@@ -169,6 +171,17 @@ public class UserServiceImpl implements UserService{
 			e.printStackTrace();
 			return null;
 		}
+		return map;
+	}
+
+	@Override
+	public Map<String, Object> loginOut(HttpServletRequest req) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		HttpSession session = req.getSession();
+		session.removeAttribute("role");
+		session.removeAttribute("account");
+		session.removeAttribute("info_id");
+		map.put("flag", "true");
 		return map;
 	}
 	

@@ -14,6 +14,10 @@ var localhostPath = function(){
     return (localhostPaht + projectName);
 };
 
+function loginOut(){
+	alert(1);
+}
+
 /**
  * 将毫秒转换为xx天xx小时xx分xx秒的格式
  * @param millisecond 毫秒数

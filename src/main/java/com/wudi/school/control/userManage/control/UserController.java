@@ -21,6 +21,11 @@ public class UserController extends BaseController{
 	public void ulogin(HttpServletResponse res,HttpServletRequest req){
 		writeUTFJson(res, userService.ulogin(req,res));
 	}
+	@RequestMapping("loginOut")
+	public void loginOut(HttpServletRequest req,HttpServletResponse res) {
+		writeUTFJson(res, userService.loginOut(req));
+	}
+	
 	
 	@RequestMapping("getMyInfo")
 	public void getMyInfo(HttpServletRequest req,HttpServletResponse res){

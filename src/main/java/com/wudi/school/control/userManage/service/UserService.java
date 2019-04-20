@@ -19,4 +19,6 @@ public interface UserService {
 
 	Map<String,Object> outlayObjection(HttpServletRequest req);
 
+	Map<String,Object> loginOut(HttpServletRequest req);
+
 }

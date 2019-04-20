@@ -6,7 +6,7 @@ function getIndex(){
 		type : "post",
 		success : function(data){
 			$(".name").html(data.name);
-			$(".stu_id").html(data.stu_id);
+			$("#stu_id").html(data.stu_id);
 			$("#outlay_need_all").html(data.outlay_need_all);
 			$("#outlay_yes_all").html(data.outlay_yes_all);
 			$("#outlay_no_all").html(data.outlay_no_all);
