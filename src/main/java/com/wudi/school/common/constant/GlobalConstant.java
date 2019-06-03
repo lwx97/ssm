@@ -10,7 +10,7 @@ public class GlobalConstant {
 	/**
 	 * 系统主页路径
 	 */
-	public static final String INDEX_PATH = "/html/index2.html";
+	public static final String INDEX_PATH = "/index.html";
 	/**
 	 * 学生权限带有特定字符的URL
 	 */

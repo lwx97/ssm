@@ -13,5 +13,7 @@
 								#{report_type},#{text},#{report_status},
 								#{noReport},#{info_id})	
 	</insert>
-	
+	<update id="updateInfo" parameterType="java.lang.String">
+		update stu_info set status = '1' where stu_id=#{id}
+	</update>
 	</mapper>

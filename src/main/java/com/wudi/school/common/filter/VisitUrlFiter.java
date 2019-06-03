@@ -29,6 +29,7 @@ public class VisitUrlFiter implements Filter {
 //		String account = (String) session.getAttribute("account");
 		String role = (String) session.getAttribute("role");
 		if(role==null){
+			//重定向回主页面。
 			res.sendRedirect(req.getScheme()+"://"+req.getServerName()+":"+req.getServerPort()+req.getContextPath()+GlobalConstant.INDEX_PATH);
 			return;
 		}else if(path.contains(GlobalConstant.STU_URL) && GlobalConstant.STU_VALUE.equals(role)){

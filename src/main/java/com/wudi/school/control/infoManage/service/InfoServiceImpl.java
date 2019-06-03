@@ -34,6 +34,7 @@ public class InfoServiceImpl implements InfoService{
 		map2.put("title", req.getParameter("title"));
 		map2.put("text", req.getParameter("text"));
 		int i = infoMapper.sendReportInfo(map2);
+		infoMapper.updateInfo(id);
 		if(i!=0){
 			map.put("flag", i);
 			return map;

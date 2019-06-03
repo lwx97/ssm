@@ -1,4 +1,35 @@
 
+//回显报到信息
+function getMsg(){
+	
+	$.ajax({
+		dataType : "json",
+		type : "post",
+		success : function(data){
+			if(data.flag == "true"){
+				//报到状态
+				$('#Ctype1  option:selected').val(data.report_status);
+				//到校方式
+				var vs2 = $('#Ctype2  option:selected').val(data.report_type);
+				//无法报到原因
+				$('#Ctype3  option:selected').val(data.noReport);
+				$("#Ctitle3").val(report_phone);
+				$(".Wdate").val(report_time);
+				$("#Ctitle1").val(title);
+				$("#Ccontent").val(text);
+				if(noReport!=""){
+					
+				}
+			}
+		},
+		error : function(data){
+			alert("error!");
+		}
+		
+	});
+}
+
+
 function func(){
 	var vs = $('#Ctype1  option:selected').val();
 	if(vs==3){
