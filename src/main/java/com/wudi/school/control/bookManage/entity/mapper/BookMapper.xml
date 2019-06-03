@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+		<mapper namespace="com.wudi.school.control.bookManage.dao.BookMapper">
+		
+		<select id="getBookByTuId" resultType="java.util.Map" parameterType="java.lang.String">
+			select c.id,c.course_name,c.tu_id,c.ps  
+				from course c where c.tu_id = 
+				(SELECT t.tu_id FROM tuition t 
+					LEFT JOIN stu_info s ON t.coll_id = s.major_id 
+					where s.stu_id = #{info_id}) or c.tu_id = 0
+						
+		</select>
+		
+		</mapper>
