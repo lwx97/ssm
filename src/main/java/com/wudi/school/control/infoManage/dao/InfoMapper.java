@@ -8,4 +8,8 @@ public interface InfoMapper {
 
 	public void updateInfo(String id);
 
+	public void daikuan(Map<String, String> map2);
+
+	public Map<String,String> seldaikuanInfo(String stu_id);
+
 }

@@ -14,7 +14,10 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.wudi.school.control.infoManage.dao.InfoMapper;
 import com.wudi.school.control.teaManage.dao.TeaMapper;
+import com.wudi.school.control.userManage.dao.UserMapper;
+import com.wudi.school.control.userManage.service.UserService;
 
 @Service
 public class TeaServiceImpl implements TeaService{
@@ -22,7 +25,11 @@ public class TeaServiceImpl implements TeaService{
 	@Autowired
 	private TeaMapper teaMapper;
 	
+	@Autowired
+	private UserMapper userMapper;
 	
+	@Autowired
+	private InfoMapper infoMapper;
 	@Override
 	public Map<String, Object> getStuInfo() {
 		HashMap<String, Object> map = new HashMap<String,Object>();
@@ -57,7 +64,16 @@ public class TeaServiceImpl implements TeaService{
 		HashMap<String, Object> map = new HashMap<String,Object>();
 		String id = req.getParameter("id");
 		Map<String, String> stuInfo = teaMapper.selStuInfoById(id);
-		
+		List<Map<String, String>> list = userMapper.getOutlayInfo(stuInfo.get("stu_id"));
+		int outlay_no_all = 0;
+		for(Map<String,String> m: list){
+			outlay_no_all += Integer.valueOf(m.get("outlay_no"));
+		}
+		if(outlay_no_all!=0) {
+			stuInfo.put("outlay", "未缴纳");
+		}else {
+			stuInfo.put("outlay", "已缴纳");
+		}
 		map.put("stuInfo", stuInfo);
 		return map;
 	}
@@ -152,6 +168,70 @@ public class TeaServiceImpl implements TeaService{
 	    //设置行高，行高的单位就是像素，因此30就是30像素的意思
 	    header.setHeightInPoints(30);
 	    return wb;  
+	}
+
+
+	@Override
+	public Map<String, Object> jiaona(HttpServletRequest req) {
+		HashMap<String, Object> map = new HashMap<String,Object>();
+		try {
+			String id = req.getParameter("id");
+			teaMapper.jiaona(id);
+		}catch (Exception e) {
+			return null;
+		}
+		map.put("flag", "true");
+		return map;
+	}
+
+
+	@Override
+	public Map<String, Object> updatePwd(HttpServletRequest req) {
+		HashMap<String, Object> map = new HashMap<String,Object>();
+		int i = 0;
+		try {
+			String account = (String) req.getSession().getAttribute("account");
+			String p1 = req.getParameter("p1");
+			String p = req.getParameter("p");
+			HashMap<String, String> hashMap = new HashMap<>();
+			hashMap.put("p1", p1);
+			hashMap.put("p", p);
+			hashMap.put("account", account);
+			i = teaMapper.updatePwd(hashMap);
+		}catch (Exception e) {
+			return null;
+		}
+		if(i==0) {
+			map.put("flag", "flase");
+		}else {
+			map.put("flag", "true");
+		}
+		
+		return map;
+	}
+
+
+	@Override
+	public Map<String, Object> seldaikuanInfo(HttpServletRequest req) {
+		HashMap<String, Object> map = new HashMap<String,Object>();
+		String stu_id = req.getParameter("id");
+		Map<String, String> info = infoMapper.seldaikuanInfo(stu_id);
+		map.put("info", info);
+		return map;
+	}
+
+
+	@Override
+	public Map<String, Object> updatedaikuanInfo(HttpServletRequest req) {
+		HashMap<String, Object> map = new HashMap<String,Object>();
+		try {
+			String stu_id = req.getParameter("id");
+			teaMapper.updatedaikuanInfo(stu_id);
+		}catch (Exception e) {
+			return null;
+		}
+		map.put("flag", "true");
+		return map;
 	}
 
 

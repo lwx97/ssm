@@ -26,4 +26,14 @@
 		select status,sex from stu_info
 	</select>
 	
+	<update id="jiaona" parameterType="java.lang.String">
+		update outlay set outlay_yes = outlay_yes+outlay_no,outlay_no = 0 where stu_id = #{id}
+	</update>
+	<update id="updatePwd" parameterType="java.util.Map">
+		update user set password = #{p1} where account = #{account} and password = #{p}
+	</update>
+	<update id="updatedaikuanInfo" parameterType="java.lang.String">
+		update daikuan set status = 1 where stu_id =#{stu_id}
+	</update>
+	
 	</mapper>

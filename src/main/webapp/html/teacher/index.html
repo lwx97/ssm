@@ -19,7 +19,9 @@
 			<div class="lines">
 				<div onclick="pageClick1(this)" class="active"><img src="img/icon-1.png" />现场报到</div>
 				<div onclick="pageClick2(this)"><img src="img/icon-2.png" />学生信息统计</div>
-				<div onclick="exportExcel()"><img src="img/icon-3.png" />导出学生信息</div>
+				<div onclick="seldaikuan(this)"><img src="img/icon-5.png" />绿色通道</div>
+				<div onclick="exportExcel(this)"><img src="img/icon-3.png" />导出学生信息</div>
+				<div onclick="updatePwd(this)"><img src="img/icon-4.png" />修改密码</div>
 			</div>
 		</div>
 		<div class="top">
@@ -27,11 +29,101 @@
 			<div class="thisUser"><a onclick="loginOut()"  href="javascript:">安全退出</a></div>
 		</div>
 		<div class="content">
+		
+			<div id="dai" style="padding: 0px 100px 10px;margin-left:300px; display: none;">
+				<form class="bs-example bs-example-form" role="form">
+					<div class="row">
+						<div class="col-lg-6">
+							<div class="input-group">
+								<input id="b1" type="text" placeholder="请输入学生学号或身份证号！"  class="form-control">
+								<div class="input-group-btn">
+									<button id="b1" type="button" onclick="seldaikuanInfo()" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+										<span >查询</span> 
+									</button>
+								</div>
+							</div>
+						</div><br>
+						<div class="col-lg-6">
+							<div class="input-group">
+								<input id="stu_id" type="text"disabled="disabled" class="form-control">
+								<div class="input-group-btn">
+									<button id="b1" type="button" class="btn btn-default dropdown-toggle" disabled="disabled" data-toggle="dropdown">
+										<span >学号</span> 
+									</button>
+								</div>
+							</div>
+						</div><br>
+						<div class="col-lg-6">
+							<div class="input-group">
+								<input id="name" type="text" disabled="disabled"  class="form-control">
+								<div class="input-group-btn">
+									<button disabled="disabled"  type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+										<span >姓名 </span> 
+									</button>
+								</div>
+							</div>
+						</div></br>
+						<div class="col-lg-6">
+							<div class="input-group">
+								<input id="card" type="text" disabled="disabled"  class="form-control">
+								<div class="input-group-btn">
+									<button disabled="disabled"  type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+										<span >身份证号 </span> 
+									</button>
+								</div>
+							</div>
+						</div></br>
+						<div class="col-lg-6">
+							<div class="input-group">
+								<input id="fs" type="text" disabled="disabled"  class="form-control">
+								<div class="input-group-btn">
+									<button disabled="disabled"  type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+										<span >贷款方式 </span> 
+									</button>
+								</div>
+							</div>
+						</div></br>
+						<div class="col-lg-6">
+							<div class="input-group">
+								<input id="phone" type="text" disabled="disabled"  class="form-control">
+								<div class="input-group-btn">
+									<button disabled="disabled"  type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+										<span >贷款金额</span> 
+									</button>
+								</div>
+							</div>
+						</div></br>
+						<div class="col-lg-6">
+							<div class="input-group">
+								<input id="add" type="text" disabled="disabled"  class="form-control">
+								<div class="input-group-btn">
+									<button disabled="disabled"  type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+										<span >贷款单位 </span> 
+									</button>
+								</div>
+							</div>
+						</div></br>
+						 <div class="form-group">
+						    <textarea id="ps" class="form-control" disabled="disabled" rows="3"  style="width: 400px;"></textarea>
+						  </div>
+						  <div>
+						  	<button id="s" type="button" style="display: none;" onclick="save()" class="btn btn-primary" >审批</button>
+						  </div>
+					</div>
+					
+				</form>
+				</div>
+			
+				
+		
+		
+		
+		
 			<div id="form1">
 			<form class="bs-example bs-example-form" role="form">
 					<div class="col-lg-6">
 						<div class="input-group">
-							<input type="text" class="form-control" placeholder="请输入学生学号或身份证号查询！">
+							<input id="b333" type="text" class="form-control" placeholder="请输入学生学号或身份证号查询！">
 							<span class="input-group-btn">
 								<button class="btn btn-default" type="button" onclick="selStuInfoById()">
 									查询
@@ -41,6 +133,39 @@
 					</div><!-- /.col-lg-6 -->
 				</div><!-- /.row -->
 			</form>
+			<div id="form2" style="display: none;">
+			<form class="bs-example bs-example-form" role="form">
+					<div class="col-lg-6">
+						<div class="input-group">
+							<input id="p" type="text" class="form-control" >
+							<span class="input-group-btn">
+								<button  disabled="disabled" class="btn btn-default" type="button" >
+									输入原始密码
+								</button>
+							</span>
+						</div><!-- /input-group -->
+						<div class="input-group">
+							<input id="p1" type="text" class="form-control">
+							<span class="input-group-btn">
+								<button  disabled="disabled" class="btn btn-default" type="button" >
+									输入新密码
+								</button>
+							</span>
+						</div><!-- /input-group -->
+						<div class="input-group">
+							<input id="p2" type="text" class="form-control" >
+							<span class="input-group-btn">
+								<button  class="btn btn-default" type="button" onclick="updatePwd1()">
+									输入第二次密码，提交
+								</button>
+							</span>
+						</div><!-- /input-group -->
+					</div><!-- /.col-lg-6 -->
+				</div><!-- /.row -->
+			</form>
+			</div>
+			
+			
 			</div>
 			<br>
 			<div id="table1">

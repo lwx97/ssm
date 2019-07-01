@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+	<mapper namespace="com.wudi.school.control.adminManage.dao.AdminMapper">
+		<select id="getInfo" resultType="java.util.Map">
+			select u.userid, u.account,u.role,u.`name` FROM `user` u WHERE u.role IN (2,3)
+		</select>
+		<select id="getUser" resultType="java.lang.String" parameterType="java.lang.String">
+			select u.role from user u where u.userid = #{id}
+		</select>
+		<update id="updatePower" parameterType="java.util.Map">
+			update user set role = #{role} where userid = #{id}
+		</update>
+		<select id="getMenuType" resultType="java.util.Map">
+			SELECT mt.id,mt.type_name,mt.type_value FROM menu_type mt
+		</select>
+		<select id="getMenu" resultType="java.util.Map" parameterType="java.lang.String">
+			SELECT m.id,m.menu_name,m.menu_value FROM menu m LEFT JOIN menu_type mt ON m.type_id = mt.id WHERE m.type_id = #{id}
+		</select>
+		<update id="saveInfo" parameterType="java.util.Map">
+			update menu set menu_value = #{txt} where id = #{id}
+		</update>
+	
+	</mapper>

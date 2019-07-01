@@ -15,65 +15,95 @@
 
 	<body>
 		<div class="left">
-			<div class="bigTitle">迎新生管理系统教师后台</div>
+			<div class="bigTitle">迎新生管理系统管理后台</div>
 			<div class="lines">
-				<div onclick="pageClick1(this)" class="active"><img src="img/icon-1.png" />现场报到</div>
-				<div onclick="pageClick2(this)"><img src="img/icon-2.png" />学生信息统计</div>
-				<div onclick="exportExcel()"><img src="img/icon-3.png" />导出学生信息</div>
+				<div onclick="pageClick2(this)" class="active"><img src="img/icon-1.png" />网站维护</div>
+				<div onclick="pageClick1(this)"><img src="img/icon-2.png" />权限管理</div>
 			</div>
 		</div>
 		<div class="top">
-			<div class="leftTiyle" id="flTitle">现场报到</div>
+			<div class="leftTiyle" id="flTitle">网站维护</div>
 			<div class="thisUser"><a onclick="loginOut()"  href="javascript:">安全退出</a></div>
 		</div>
-		<div class="content">
-			<div id="form1">
-			<form class="bs-example bs-example-form" role="form">
-					<div class="col-lg-6">
-						<div class="input-group">
-							<input type="text" class="form-control" placeholder="请输入学生学号或身份证号查询！">
-							<span class="input-group-btn">
-								<button class="btn btn-default" type="button" onclick="selStuInfoById()">
-									查询
-								</button>
-							</span>
-						</div><!-- /input-group -->
-					</div><!-- /.col-lg-6 -->
-				</div><!-- /.row -->
-			</form>
+			<div id="c3" class="content">
+				<h1>欢迎管理员登陆系统</h1>
 			</div>
-			<br>
-			<div id="table1">
+			<div id="c1" class="content" style="display: none;">
+			  <h3>网站维护信息</h3>
+			<div style="padding: 10px 100px 10px;margin-left:300px;">
+				<form class="bs-example bs-example-form" role="form">
+					<div class="row">
+						<div class="col-lg-6">
+							<div class="input-group">
+								<input id="b1" type="text" disabled="disabled" class="form-control">
+								<div class="input-group-btn">
+									<button id="b1" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+										<span >选择菜单模块</span> 
+										<span class="caret"></span>
+									</button>
+									<ul id="u1" class="dropdown-menu pull-right">
+										<li><a href="#">功能</a></li>
+										<li><a href="#">另一个功能</a></li>
+										<li><a href="#">其他</a></li>
+										<li class="divider"></li>
+										<li><a href="#">分离的链接</a></li>
+									</ul>
+								</div>
+							</div>
+						</div><br>
+						<div class="col-lg-6">
+							<div class="input-group">
+								<input id="b2" type="text" disabled="disabled"  class="form-control">
+								<div class="input-group-btn">
+									<button  type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+										<span >选择维护功能 </span> 
+										<span class="caret"></span>
+									</button>
+									<ul id="u2" class="dropdown-menu pull-right">
+										<li><a href="#">功能</a></li>
+										<li><a href="#">另一个功能</a></li>
+										<li><a href="#">其他</a></li>
+										<li class="divider"></li>
+										<li><a href="#">分离的链接</a></li>
+									</ul>
+								</div>
+							</div>
+						</div></br>
+						 <div class="form-group">
+						    <textarea id="txt" class="form-control" rows="10"  style="width: 400px;"></textarea>
+						  </div>
+						  <div>
+						  	<button type="button" onclick="saveInfo()" class="btn btn-primary" >保存</button>
+						  </div>
+					</div>
+					
+				</form>
+				</div>
+			
+				
+			</div>
+			
+		
+			<div id="c2" class="content" style="display: none;">
+			<h1>教师或管理员信息</h1>
+			</div>
+			<div id="table1" style="display: none;">
 				<table class="table table-striped">
 					<thead>
 						<tr>
-							<th>学号</th>
+							<th>账号</th>
 							<th>姓名</th>
-							<th>身份证号</th>
-							<th>性别</th>
-							<th>班级</th>
-							<th>报到状态</th>
+							<th>角色</th>
+							<th>操作</th>
 						</tr>
 					</thead>
 					<tbody>
 						
 					</tbody>
 			</table>
-			<div id="ul1">
-				<ul class="pagination">
-					<li class="disabled"><a href="#">&laquo;</a></li>
-					<li class="active"><a href="#">1</a></li>
-					<li><a href="#">2</a></li>
-					<li><a href="#">3</a></li>
-					<li><a href="#">4</a></li>
-					<li><a href="#">5</a></li>
-					<li><a href="#">&raquo;</a></li>
-				</ul>
-			</div>
-			</div>
-			<div  id="main" style="width: 600px;height:400px;float:left;"></div>
-			<div  id="main1" style="width: 600px;height:400px;float:left;"></div>
 		</div>
+			
+		
 		
 	</body>
 

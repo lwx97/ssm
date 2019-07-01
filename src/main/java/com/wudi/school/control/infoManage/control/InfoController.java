@@ -20,5 +20,12 @@ public class InfoController extends BaseController{
 	public void sendReportInfo(HttpServletRequest req,HttpServletResponse res){
 		writeUTFJson(res, infoService.sendReportInfo(req));
 	}
-	
+	@RequestMapping("daikuan")
+	public void daikuan(HttpServletRequest req,HttpServletResponse res) {
+		writeUTFJson(res, infoService.daikuan(req));
+	}
+	@RequestMapping("seldaikuanInfo")
+	public void seldaikuanInfo(HttpServletResponse res,HttpServletRequest req) {
+		writeUTFJson(res, infoService.seldaikuanInfo(req));
+	}
 }

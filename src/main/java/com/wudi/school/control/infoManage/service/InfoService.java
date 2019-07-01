@@ -8,4 +8,8 @@ public interface InfoService {
 
 	Map<String,Object> sendReportInfo(HttpServletRequest req);
 
+	Map<String,Object> daikuan(HttpServletRequest req);
+
+	Map<String,Object> seldaikuanInfo(HttpServletRequest req);
+
 }

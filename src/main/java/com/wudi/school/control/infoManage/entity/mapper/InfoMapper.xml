@@ -14,6 +14,14 @@
 								#{noReport},#{info_id})	
 	</insert>
 	<update id="updateInfo" parameterType="java.lang.String">
-		update stu_info set status = '1' where stu_id=#{id}
+		update stu_info set status = 1 where stu_id=#{id}
 	</update>
+	<insert id="daikuan" parameterType="java.util.Map">
+		insert into daikuan(id,stu_id,name,fs,phone,adderss,ps,card,status)
+			values(#{id},#{stu_id},#{name},#{fs},#{phone},#{adderss},#{ps},#{card},0)
+	</insert>
+	
+	<select id="seldaikuanInfo" parameterType="java.lang.String" resultType="java.util.Map">
+		select * from daikuan where stu_id = #{stu_id} or card = #{stu_id}
+	</select>
 	</mapper>

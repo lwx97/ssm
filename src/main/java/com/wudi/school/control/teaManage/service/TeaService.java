@@ -18,4 +18,12 @@ public interface TeaService {
 
 	HSSFWorkbook exporExcel();
 
+	Map<String,Object> jiaona(HttpServletRequest req);
+
+	Map<String,Object> updatePwd(HttpServletRequest req);
+
+	Map<String,Object> seldaikuanInfo(HttpServletRequest req);
+
+	Map<String,Object> updatedaikuanInfo(HttpServletRequest req);
+
 }

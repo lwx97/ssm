@@ -129,7 +129,7 @@ function ulogin(){
 					}else if(data.role+"" == "2"){
 						window.location.href="../html/teacher/index.html";
 					}else if(data.role+"" == "3"){
-						window.location.href="../html/student/Index.aspx.html";
+						window.location.href="../html/admin/index.html";
 					}
 					
 				}else if(data.flag=="false"){

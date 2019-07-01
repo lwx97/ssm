@@ -48,4 +48,20 @@ public class TeaController extends BaseController {
         ouputStream.flush();  
         ouputStream.close();  
 	}
+	@RequestMapping("jiaona")
+	public void jiaona(HttpServletRequest req,HttpServletResponse res) {
+		writeUTFJson(res, teaService.jiaona(req));
+	}
+	@RequestMapping("updatePwd")
+	public void updatePwd(HttpServletRequest req,HttpServletResponse res) {
+		writeUTFJson(res, teaService.updatePwd(req));
+	}
+	@RequestMapping("seldaikuanInfo")
+	public void seldaikuanInfo(HttpServletRequest req,HttpServletResponse res) {
+		writeUTFJson(res, teaService.seldaikuanInfo(req));
+	}
+	@RequestMapping("updatedaikuanInfo")
+	public void updatedaikuanInfo(HttpServletRequest req,HttpServletResponse res) {
+		writeUTFJson(res, teaService.updatedaikuanInfo(req));
+	}
 }
